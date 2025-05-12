@@ -42,7 +42,7 @@ public class DatosGeneralesActivity extends AppCompatActivity {
                 String coordenadas = etCoordenadas.getText().toString().trim();
 
                 // Enviar a siguiente pantalla
-                Intent intent = new Intent(DatosGeneralesActivity.this, CaracteristicasActivity.class);
+                Intent intent = new Intent(DatosGeneralesActivity.this, AtributosActivity.class);
                 intent.putExtra("numero", numero);
                 intent.putExtra("nombreCientifico", nombreCientifico);
                 intent.putExtra("nombreComun", nombreComun);
