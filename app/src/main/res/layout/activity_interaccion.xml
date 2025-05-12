@@ -1,34 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:padding="16dp"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Spinner
-        android:id="@+id/spInteraccion"
+    <!-- Fondo de hojas -->
+    <ImageView
+        android:id="@+id/fondo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo_hojas"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_name"
+        android:alpha="0.4" />
 
-    <EditText
-        android:id="@+id/etOrganismo"
-        android:hint="Organismo de interacción"
+    <!-- Contenedor principal con fondo claro y bordes redondeados -->
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_height="match_parent"
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/btnSiguiente"
-        android:text="Siguiente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_rounded_container"
+            android:padding="24dp">
 
-    <Button
-        android:id="@+id/btnRegresar"
-        android:text="Regresar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp" />
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvTitulo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Interacción"
+                android:textSize="24sp"
+                android:textColor="#2E2E2E"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spInteraccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <EditText
+                android:id="@+id/etOrganismo"
+                android:hint="Organismo de interacción"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnSiguiente"
+                android:text="Siguiente"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#4C7845"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="24dp" />
+
+            <Button
+                android:id="@+id/btnRegresar"
+                android:text="Regresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#4C7845"
+                android:textColor="#FFFFFF"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
