@@ -31,12 +31,6 @@
             android:name=".InteraccionActivity"
             android:exported="false" />
         <activity
-            android:name=".HojasFloresFrutosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CaracteristicasActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
