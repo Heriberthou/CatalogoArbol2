@@ -35,15 +35,22 @@ Permite a los usuarios conocer la vegetación arbórea del campus, registrar nue
 
 ## Estrucutura del proyecto
 /catalogo-arbol
+
 ├── index.html                 # Página principal con listado de especies
+
 ├── registrar.html             # Registro de nuevas especies
+
 ├── detalle.html               # Página de detalles de una especie
+
 ├── css/
 │   └── estilos.css            # Estilos personalizados
+
 ├── js/
 │   └── script.js              # Lógica de interacción
+
 ├── images/
 │   └── (imágenes de árboles)
+
 └── README.md                  # Este archivo
 
  ## ¿Cómo usar?
@@ -69,7 +76,7 @@ nelida.lopezcruz@aulavirual.umar.mx
 QUINTAS ROJAS ABRIL AZENETH
 abrilazeneth.quintasrojas@aulavirual.umar.mx
 
-## Universidad: Universidad del Mar
+## Universidad del Mar
 
 ## Licencia
 Este proyecto es de uso educativo y puede ser adaptado para otros contextos escolares o universitarios.
