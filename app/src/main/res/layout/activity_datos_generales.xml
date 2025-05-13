@@ -38,76 +38,106 @@
         android:layout_marginHorizontal="0dp"
         android:layout_marginBottom="0dp">
 
+        <!-- Número -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Número (identificador)"
+            android:textStyle="bold"
+            android:textColor="#2E2E2E"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp" />
 
-            <!-- Campo Número -->
-            <EditText
-                android:id="@+id/etNumero"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Número (identificador)"
-                android:inputType="number"
-                android:layout_marginBottom="16dp"
-                android:textColorHint="#7C7C7C"
-                android:textColor="#2E2E2E"
-                android:background="@null" />
+        <EditText
+            android:id="@+id/etNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:inputType="number"
+            android:textColor="#2E2E2E"
+            android:textColorHint="#7C7C7C"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background_normal" />
 
-            <!-- Campo Nombre científico -->
-            <EditText
-                android:id="@+id/etNombreCientifico"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre científico"
-                android:textStyle="italic"
-                android:layout_marginBottom="16dp"
-                android:textColorHint="#7C7C7C"
-                android:textColor="#2E2E2E"
-                android:background="@null" />
+        <!-- Nombre científico -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre científico"
+            android:textStyle="italic"
+            android:textColor="#2E2E2E"
+            android:textSize="16sp" />
 
-            <!-- Campo Nombre común -->
-            <EditText
-                android:id="@+id/etNombreComun"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Nombre común"
-                android:layout_marginBottom="16dp"
-                android:textColorHint="#7C7C7C"
-                android:textColor="#2E2E2E"
-                android:background="@null" />
+        <EditText
+            android:id="@+id/etNombreCientifico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#2E2E2E"
+            android:textColorHint="#7C7C7C"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background_normal" />
 
-            <!-- Campo Coordenadas -->
-            <EditText
-                android:id="@+id/etCoordenadas"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Coordenadas geográficas"
-                android:inputType="text"
-                android:layout_marginBottom="32dp"
-                android:textColorHint="#7C7C7C"
-                android:textColor="#2E2E2E"
-                android:background="@null" />
+        <!-- Nombre común -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre común"
+            android:textStyle="bold"
+            android:textColor="#2E2E2E"
+            android:textSize="16sp" />
 
-            <!-- Botón Siguiente -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnSiguiente"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Siguiente"
-                app:cornerRadius="16dp"
-                android:backgroundTint="#4C7845"
-                android:textColor="#FFFFFF"
-                android:layout_marginBottom="12dp" />
+        <EditText
+            android:id="@+id/etNombreComun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:textColor="#2E2E2E"
+            android:textColorHint="#7C7C7C"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background_normal" />
 
-            <!-- Botón Regresar -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnRegresar"
-                style="@style/Widget.MaterialComponents.Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Regresar"
-                app:cornerRadius="16dp"
-                android:backgroundTint="#4C7845"
-                android:textColor="#FFFFFF" />
+        <!-- Coordenadas -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Coordenadas geográficas"
+            android:textStyle="bold"
+            android:textColor="#2E2E2E"
+            android:textSize="16sp" />
 
-        </LinearLayout>
+        <EditText
+            android:id="@+id/etCoordenadas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:textColor="#2E2E2E"
+            android:textColorHint="#7C7C7C"
+            android:padding="10dp"
+            android:background="@android:drawable/editbox_background_normal" />
+
+        <!-- Botón Siguiente -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSiguiente"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Botón Regresar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegresar"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 </FrameLayout>
