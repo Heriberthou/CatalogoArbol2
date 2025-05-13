@@ -14,7 +14,7 @@ public class SplashActivity extends AppCompatActivity {
 
         // Retraso de 2.5 segundos antes de pasar al inicio
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashActivity.this, DatosGeneralesActivity.class));
+            startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish(); // Cierra Splash
         }, 2500);
     }

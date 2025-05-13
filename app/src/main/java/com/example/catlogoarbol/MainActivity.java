@@ -1,99 +1,56 @@
-// Paso 1: Adaptador personalizado para mostrar los árboles
-
 package com.example.catlogoarbol;
 
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
-import android.widget.ImageView;
-import android.widget.TextView;
-import androidx.annotation.NonNull;
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.SearchView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.ArrayList;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
-public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHolder> implements Filterable {
+public class MainActivity extends AppCompatActivity {
 
-    private List<Arbol> listaCompleta;
-    private List<Arbol> listaFiltrada;
-    private Context context;
-
-    public ArbolAdapter(Context context, List<Arbol> listaArboles) {
-        this.context = context;
-        this.listaCompleta = listaArboles;
-        this.listaFiltrada = new ArrayList<>(listaArboles);
-    }
-
-    @NonNull
-    @Override
-    public ArbolViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_arbol, parent, false);
-        return new ArbolViewHolder(view);
-    }
+    private RecyclerView recyclerView;
+    private ArbolAdapter arbolAdapter;
+    private SearchView searchView;
+    private FloatingActionButton fabAgregar;
+    private DatabaseHelper dbHelper;
 
     @Override
-    public void onBindViewHolder(@NonNull ArbolViewHolder holder, int position) {
-        Arbol arbol = listaFiltrada.get(position);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        holder.tvNumero.setText("Árbol #" + arbol.getNumero());
-        holder.tvNombreCientifico.setText(arbol.getNombreCientifico());
-        holder.tvNombreComun.setText(arbol.getNombreComun());
+        recyclerView = findViewById(R.id.recyclerView);
+        searchView = findViewById(R.id.searchView);
+        fabAgregar = findViewById(R.id.fabAgregar);
+        dbHelper = new DatabaseHelper(this);
 
-        // Aquí deberías cargar la imagen desde URI o ruta local si tienes
-        holder.imgArbol.setImageResource(R.drawable.ic_logo); // Por ahora, un ícono fijo
-    }
+        // Cargar datos reales
+        List<Arbol> listaArboles = dbHelper.obtenerArbolesComoObjetos();
+        arbolAdapter = new ArbolAdapter(this, listaArboles);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(arbolAdapter);
 
-    @Override
-    public int getItemCount() {
-        return listaFiltrada.size();
-    }
-
-    @Override
-    public Filter getFilter() {
-        return filtro;
-    }
-
-    private final Filter filtro = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<Arbol> filtrada = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0) {
-                filtrada.addAll(listaCompleta);
-            } else {
-                String filtroPatron = constraint.toString().toLowerCase().trim();
-                for (Arbol a : listaCompleta) {
-                    if (a.getNombreCientifico().toLowerCase().contains(filtroPatron) ||
-                            a.getNombreComun().toLowerCase().contains(filtroPatron)) {
-                        filtrada.add(a);
-                    }
-                }
+        // Buscar en tiempo real
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
             }
-            FilterResults results = new FilterResults();
-            results.values = filtrada;
-            return results;
-        }
 
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            listaFiltrada.clear();
-            listaFiltrada.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                arbolAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
-    public static class ArbolViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgArbol;
-        TextView tvNumero, tvNombreCientifico, tvNombreComun;
-
-        public ArbolViewHolder(@NonNull View itemView) {
-            super(itemView);
-            imgArbol = itemView.findViewById(R.id.imgArbol);
-            tvNumero = itemView.findViewById(R.id.tvNumero);
-            tvNombreCientifico = itemView.findViewById(R.id.tvNombreCientifico);
-            tvNombreComun = itemView.findViewById(R.id.tvNombreComun);
-        }
+        fabAgregar.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, DatosGeneralesActivity.class);
+            startActivity(intent);
+        });
     }
 }

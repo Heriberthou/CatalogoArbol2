@@ -1,54 +1,48 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
-    app:cardCornerRadius="16dp"
+    app:cardCornerRadius="8dp"
     app:cardElevation="4dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="12dp"
         android:orientation="horizontal"
-        android:gravity="center_vertical">
+        android:padding="16dp">
 
         <ImageView
             android:id="@+id/imgArbol"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
             android:scaleType="centerCrop"
             android:background="@drawable/bg_circle"
             android:clipToOutline="true"
-            android:outlineProvider="background"
-            android:src="@drawable/ic_logo" />
+            android:outlineProvider="background" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical"
-            android:layout_marginStart="16dp">
+            android:paddingStart="16dp">
 
             <TextView
                 android:id="@+id/tvNumero"
                 android:text="Árbol #001"
                 android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#2E2E2E"
-                android:layout_marginBottom="4dp"/>
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvNombreCientifico"
                 android:text="Nombre científico"
-                android:textStyle="italic"
-                android:textColor="#4C7845" />
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/tvNombreComun"
-                android:text="Nombre común"
-                android:textColor="#777777" />
+                android:text="Nombre común" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

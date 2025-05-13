@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Permisos -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission
-        android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -24,24 +22,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatálogoArbol"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ArbolAdapter"
+            android:exported="false" />
         <!-- Splash -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".AtributosActivity" android:exported="false" />
-        <activity android:name=".ObservacionesFotosActivity" android:exported="false" />
-        <activity android:name=".InteraccionActivity" android:exported="false" />
-        <activity android:name=".MainActivity" android:exported="false" />
-        <activity android:name=".DatosGeneralesActivity" android:exported="false" />
-
-        <!-- Proveedor para fotos -->
+        <activity
+            android:name=".AtributosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ObservacionesFotosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".InteraccionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DatosGeneralesActivity"
+            android:exported="false" /> <!-- Proveedor para fotos -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -51,6 +59,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
     </application>
+
 </manifest>

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
@@ -111,4 +112,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return lista;
     }
+
+    public List<Arbol> obtenerArbolesComoObjetos() {
+        List<Arbol> lista = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM " + TABLE_NAME, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int numero = cursor.getInt(cursor.getColumnIndexOrThrow("numero"));
+                String nombreCientifico = cursor.getString(cursor.getColumnIndexOrThrow("nombreCientifico"));
+                String nombreComun = cursor.getString(cursor.getColumnIndexOrThrow("nombreComun"));
+                String fotoUri = cursor.getString(cursor.getColumnIndexOrThrow("foto")); // puede estar null
+
+                lista.add(new Arbol(numero, nombreCientifico, nombreComun, fotoUri));
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+        return lista;
+    }
+
 }
