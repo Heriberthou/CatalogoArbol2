@@ -18,7 +18,7 @@
         android:id="@+id/tvTitulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Observaciones y Foto"
+        android:text="Observaciones"
         android:textSize="28sp"
         android:textStyle="bold"
         android:fontFamily="sans-serif-medium"
@@ -27,7 +27,7 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="8dp" />
 
-    <!-- Contenedor pastel -->
+    <!-- Contenedor principal -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -48,27 +48,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Observaciones -->
-                <EditText
-                    android:id="@+id/etObservaciones"
-                    android:hint="Observaciones"
-                    android:minLines="3"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColorHint="#7C7C7C"
-                    android:textColor="#2E2E2E"
-                    android:background="@null"
-                    android:layout_marginBottom="16dp" />
-
                 <!-- Vista previa de la imagen -->
                 <ImageView
                     android:id="@+id/imagePreview"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginBottom="16dp"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:background="@android:color/darker_gray" />
 
                 <!-- Botón tomar foto -->
                 <com.google.android.material.button.MaterialButton
@@ -80,6 +67,20 @@
                     app:cornerRadius="16dp"
                     android:backgroundTint="#4C7845"
                     android:textColor="#FFFFFF"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Observaciones -->
+                <EditText
+                    android:id="@+id/etObservaciones"
+                    android:hint="Escribe tus observaciones..."
+                    android:minLines="4"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#7C7C7C"
+                    android:textColor="#2E2E2E"
+                    android:background="@null"
                     android:layout_marginBottom="16dp" />
             </LinearLayout>
         </ScrollView>
@@ -106,6 +107,5 @@
             app:cornerRadius="16dp"
             android:backgroundTint="#4C7845"
             android:textColor="#FFFFFF" />
-
     </LinearLayout>
 </FrameLayout>
