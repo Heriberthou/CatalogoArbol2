@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <!-- Fondo de hojas -->
-    <!-- Fondo de hojas -->
     <ImageView
         android:id="@+id/fondo"
         android:layout_width="match_parent"
@@ -111,5 +110,4 @@
                 android:textColor="#FFFFFF" />
 
         </LinearLayout>
-    </ScrollView>
 </FrameLayout>
