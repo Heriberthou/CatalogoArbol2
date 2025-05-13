@@ -61,19 +61,19 @@ Permite a los usuarios conocer la vegetación arbórea del campus, registrar nue
 - Explora árboles, añade nuevos y visualiza detalles.
 
 ## Autores
-CORTES PEREZ IVAN ALEXANDER
+CORTES PEREZ IVAN ALEXANDER: 
 ivanalexander.cortesperez@aulavirual.umar.mx
 
-GALVAN GERMAN ALONDRA
+GALVAN GERMAN ALONDRA: 
 alondra.galvangerman@aulavirual.umar.mx
 
-GOMEZ BOLAINA HERIBERTO
+GOMEZ BOLAINA HERIBERTO: 
 heriberto.gomezbolaina@aulavirual.umar.mx
 
-LOPEZ CRUZ NELIDA
+LOPEZ CRUZ NELIDA: 
 nelida.lopezcruz@aulavirual.umar.mx
 
-QUINTAS ROJAS ABRIL AZENETH
+QUINTAS ROJAS ABRIL AZENETH: 
 abrilazeneth.quintasrojas@aulavirual.umar.mx
 
 ## Universidad del Mar
