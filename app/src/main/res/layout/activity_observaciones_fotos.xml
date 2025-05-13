@@ -1,50 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="16dp"
+    <!-- Fondo de hojas -->
+    <ImageView
+        android:id="@+id/fondo"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:src="@drawable/fondo_hojas"
+        android:scaleType="centerCrop"
+        android:contentDescription="@string/app_name" />
 
-        <EditText
-            android:id="@+id/etObservaciones"
-            android:hint="Observaciones"
-            android:minLines="3"
-            android:gravity="top"
-            android:inputType="textMultiLine"
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Observaciones y Foto"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Contenedor pastel -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg_rounded_container"
+        android:padding="24dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginBottom="0dp">
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
-        <Button
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Observaciones -->
+                <EditText
+                    android:id="@+id/etObservaciones"
+                    android:hint="Observaciones"
+                    android:minLines="3"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="#7C7C7C"
+                    android:textColor="#2E2E2E"
+                    android:background="@null"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Vista previa de la imagen -->
+                <ImageView
+                    android:id="@+id/imagePreview"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginBottom="16dp"
+                    android:scaleType="centerCrop" />
+
+                <!-- Botón tomar foto -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnTomarFoto"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tomar Foto del Árbol"
+                    app:cornerRadius="16dp"
+                    android:backgroundTint="#4C7845"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginBottom="16dp" />
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Botón Guardar -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnGuardar"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Guardar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp" />
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF"
+            android:layout_marginBottom="8dp" />
 
-        <Button
+        <!-- Botón Regresar -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegresar"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Regresar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" />
-        <ImageView
-            android:id="@+id/imagePreview"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="centerCrop" />
-
-        <Button
-            android:id="@+id/btnTomarFoto"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tomar Foto del Árbol"
-            android:layout_marginTop="8dp"/>
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF" />
 
     </LinearLayout>
-</ScrollView>
+</FrameLayout>
