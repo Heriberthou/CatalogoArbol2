@@ -27,11 +27,10 @@ Permite a los usuarios conocer la vegetación arbórea del campus, registrar nue
 | Soporte de imágenes                | Permite subir una imagen del árbol. |
 
 ## Tecnologías utilizadas
-✔ HTML5
-✔ CSS3
-✔ JavaScript
-✔ Bootstrap 5
-✔ jQuery
+✔ Android SDK
+✔ Java
+✔ SQLite
+✔ JUnit
 
 ## Estrucutura del proyecto
 /catalogo-arbol
