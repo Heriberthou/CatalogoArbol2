@@ -35,21 +35,52 @@ Permite a los usuarios conocer la vegetación arbórea del campus, registrar nue
 
 ## Estrucutura del proyecto
 /catalogo-arbol
+app/
 
-├── index.html                 # Página principal con listado de especies
+├── manifests/
 
-├── registrar.html             # Registro de nuevas especies
+│   └── AndroidManifest.xml             # Archivo de manifiesto de la app
 
-├── detalle.html               # Página de detalles de una especie
+├── java/
 
-├── css/
-│   └── estilos.css            # Estilos personalizados
+│   └── com.example.catlogoarbol/       # Paquete principal
 
-├── js/
-│   └── script.js              # Lógica de interacción
+│       ├── Arbol.java                  # Clase modelo de árbol
 
-├── images/
-│   └── (imágenes de árboles)
+│       ├── ArbolAdapter.java           # Adaptador para lista de árboles
+
+│       ├── AtributosActivity.java      # Actividad para atributos del árbol
+
+│       ├── DatabaseHelper.java         # Clase para gestión de la base de datos SQLite
+
+│       ├── DatosGeneralesActivity.java # Actividad para datos generales del árbol
+
+│       ├── InteraccionActivity.java    # Actividad para interacciones con el árbol
+
+│       ├── MainActivity.java           # Actividad principal (pantalla inicial)
+
+│       ├── ObservacionesFotosActivity.java # Actividad para fotos y observaciones
+
+│       └── SplashActivity.java         # Pantalla de bienvenida
+
+│
+├── androidTest/
+
+│   └── com.example.catlogoarbol/
+
+│       └── ExampleInstrumentedTest.java # Pruebas instrumentadas (con dispositivo)
+
+│
+├── test/
+
+│   └── com.example.catlogoarbol/
+
+│       └── ExampleUnitTest.java        # Pruebas unitarias
+
+│
+├── res/                                # Recursos de la app (layouts, strings, drawables, etc.)
+
+└── res (generated)/                    # Recursos generados automáticamente
 
 └── README.md                  # Este archivo
 
