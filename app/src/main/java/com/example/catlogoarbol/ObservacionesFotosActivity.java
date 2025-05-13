@@ -60,13 +60,15 @@ public class ObservacionesFotosActivity extends AppCompatActivity {
                 new ActivityResultContracts.TakePicture(),
                 result -> {
                     if (result) {
-                        imagePreview.setImageURI(photoURI);
+                        imagePreview.setScaleType(ImageView.ScaleType.CENTER_CROP); // cambia estilo
+                        imagePreview.setImageURI(photoURI); // muestra la imagen real
                         pedirNombreParaFoto();
                     } else {
                         Toast.makeText(this, "No se capturó imagen", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
+
     }
 
     private void checkCameraPermission() {
@@ -140,12 +142,14 @@ public class ObservacionesFotosActivity extends AppCompatActivity {
         File file = new File(currentPhotoPath);
         if (file.exists() && file.delete()) {
             Toast.makeText(this, "Foto descartada", Toast.LENGTH_SHORT).show();
-            imagePreview.setImageDrawable(null);
+            imagePreview.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+            imagePreview.setImageResource(R.drawable.ic_camera); // vuelve a mostrar el ícono
             currentPhotoPath = "";
         } else {
             Toast.makeText(this, "No se pudo eliminar la foto", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void renombrarFoto(String nuevoNombre) {
         File originalFile = new File(currentPhotoPath);

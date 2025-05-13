@@ -49,13 +49,25 @@
                 android:orientation="vertical">
 
                 <!-- Vista previa de la imagen -->
-                <ImageView
-                    android:id="@+id/imagePreview"
+
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:layout_marginBottom="16dp"
-                    android:scaleType="centerCrop"
-                    android:background="@android:color/darker_gray" />
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp">
+
+                    <ImageView
+                        android:id="@+id/imagePreview"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerInside"
+                        android:src="@drawable/ic_camera"
+                        android:background="@drawable/bg_image_preview"
+                        android:contentDescription="Vista previa de la foto"
+                        android:padding="32dp" />
+                </androidx.cardview.widget.CardView>
+
 
                 <!-- Botón tomar foto -->
                 <com.google.android.material.button.MaterialButton
