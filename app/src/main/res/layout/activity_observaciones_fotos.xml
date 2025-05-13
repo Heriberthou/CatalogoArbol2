@@ -69,19 +69,28 @@
                     android:textColor="#FFFFFF"
                     android:layout_marginBottom="16dp" />
 
-                <!-- Observaciones -->
-                <EditText
-                    android:id="@+id/etObservaciones"
-                    android:hint="Escribe tus observaciones..."
-                    android:minLines="4"
-                    android:gravity="top"
-                    android:inputType="textMultiLine"
+                <!-- Recuadro verde para observaciones -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="#7C7C7C"
-                    android:textColor="#2E2E2E"
-                    android:background="@null"
-                    android:layout_marginBottom="16dp" />
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_observaciones_container"
+                    android:padding="12dp"
+                    android:layout_marginBottom="16dp">
+
+                    <EditText
+                        android:id="@+id/etObservaciones"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Escribe tus observaciones..."
+                        android:minLines="4"
+                        android:gravity="top"
+                        android:inputType="textMultiLine"
+                        android:textColorHint="#E8F5E9"
+                        android:textColor="#FFFFFF"
+                        android:background="@null"
+                        android:textSize="16sp" />
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
 
