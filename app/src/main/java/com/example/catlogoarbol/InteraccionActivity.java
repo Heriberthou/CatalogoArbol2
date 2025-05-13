@@ -10,6 +10,7 @@ public class InteraccionActivity extends AppCompatActivity {
 
     Spinner spInteraccion;
     EditText etOrganismo;
+    View viewUnderline;
     Button btnSiguiente, btnRegresar;
 
     String[] opciones = {"Depredación", "Mutualismo", "Parasitismo", "Comensalismo", "Ninguna"};
@@ -19,21 +20,25 @@ public class InteraccionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_interaccion);
 
+        // Vistas
         spInteraccion = findViewById(R.id.spInteraccion);
         etOrganismo = findViewById(R.id.etOrganismo);
+        viewUnderline = findViewById(R.id.viewUnderline); // línea bajo el campo
         btnSiguiente = findViewById(R.id.btnSiguiente);
         btnRegresar = findViewById(R.id.btnRegresar);
 
-        spInteraccion.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, opciones));
+        // Adaptador con layout personalizado
+        spInteraccion.setAdapter(new ArrayAdapter<>(this, R.layout.spinner_item, opciones));
 
         // Mostrar el campo organismo si la opción seleccionada es diferente de "Ninguna"
         spInteraccion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (!opciones[position].equals("Ninguna")) {
-                    etOrganismo.setVisibility(View.VISIBLE);
-                } else {
-                    etOrganismo.setVisibility(View.GONE);
+                boolean mostrar = !opciones[position].equals("Ninguna");
+                etOrganismo.setVisibility(mostrar ? View.VISIBLE : View.GONE);
+                viewUnderline.setVisibility(mostrar ? View.VISIBLE : View.GONE);
+
+                if (!mostrar) {
                     etOrganismo.setText("");
                 }
             }
@@ -42,6 +47,7 @@ public class InteraccionActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) { }
         });
 
+        // Botón Siguiente
         btnSiguiente.setOnClickListener(v -> {
             String interaccion = spInteraccion.getSelectedItem().toString();
             String organismo = etOrganismo.getText().toString().trim();
@@ -61,6 +67,7 @@ public class InteraccionActivity extends AppCompatActivity {
             startActivity(next);
         });
 
+        // Botón Regresar
         btnRegresar.setOnClickListener(v -> finish());
     }
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -10,64 +11,87 @@
         android:layout_height="match_parent"
         android:src="@drawable/fondo_hojas"
         android:scaleType="centerCrop"
-        android:contentDescription="@string/app_name"
-        android:alpha="0.4" />
+        android:contentDescription="@string/app_name" />
 
-    <!-- Contenedor principal con fondo claro y bordes redondeados -->
-    <ScrollView
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tvTitulo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Interacción"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="8dp" />
+
+    <!-- Contenedor pastel -->
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="24dp">
+        android:orientation="vertical"
+        android:background="@drawable/bg_rounded_container"
+        android:padding="24dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="0dp"
+        android:layout_marginHorizontal="0dp">
 
-        <LinearLayout
+
+    <!-- Spinner con texto negrita -->
+        <Spinner
+            android:id="@+id/spInteraccion"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_rounded_container"
-            android:padding="24dp">
+            android:layout_marginBottom="16dp" />
 
-            <TextView
-                android:id="@+id/tvTitulo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Interacción"
-                android:textSize="24sp"
-                android:textColor="#2E2E2E"
-                android:gravity="center"
-                android:layout_marginBottom="16dp"
-                android:textStyle="bold" />
+        <!-- EditText personalizado -->
+        <EditText
+            android:id="@+id/etOrganismo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp"
+            android:hint="Organismo de interacción"
+            android:textColorHint="#7C7C7C"
+            android:textColor="#2E2E2E"
+            android:background="@null"
+            android:visibility="gone"
+            android:paddingBottom="4dp" />
 
-            <Spinner
-                android:id="@+id/spInteraccion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+        <!-- Línea debajo del EditText -->
+        <View
+            android:id="@+id/viewUnderline"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#7C7C7C"
+            android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/etOrganismo"
-                android:hint="Organismo de interacción"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:visibility="gone" />
+        <!-- Botón Siguiente -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSiguiente"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Siguiente"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="24dp" />
 
-            <Button
-                android:id="@+id/btnSiguiente"
-                android:text="Siguiente"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_green"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="24dp" />
+        <!-- Botón Regresar -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegresar"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Regresar"
+            app:cornerRadius="16dp"
+            android:backgroundTint="#4C7845"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp" />
 
-            <Button
-                android:id="@+id/btnRegresar"
-                android:text="Regresar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/btn_green"
-                android:textColor="#FFFFFF"
-                android:layout_marginTop="8dp" />
-
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 </FrameLayout>
