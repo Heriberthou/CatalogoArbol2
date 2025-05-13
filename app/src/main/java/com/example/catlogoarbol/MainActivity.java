@@ -1,59 +1,99 @@
+// Paso 1: Adaptador personalizado para mostrar los árboles
+
 package com.example.catlogoarbol;
 
-import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ListView;
-import android.widget.Toast;
-
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHolder> implements Filterable {
 
-    DatabaseHelper dbHelper;
-    EditText etNombre, etDescripcion;
-    Button btnGuardar;
-    ListView listaArboles;
-    ArrayAdapter<String> adaptador;
+    private List<Arbol> listaCompleta;
+    private List<Arbol> listaFiltrada;
+    private Context context;
+
+    public ArbolAdapter(Context context, List<Arbol> listaArboles) {
+        this.context = context;
+        this.listaCompleta = listaArboles;
+        this.listaFiltrada = new ArrayList<>(listaArboles);
+    }
+
+    @NonNull
+    @Override
+    public ArbolViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.item_arbol, parent, false);
+        return new ArbolViewHolder(view);
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public void onBindViewHolder(@NonNull ArbolViewHolder holder, int position) {
+        Arbol arbol = listaFiltrada.get(position);
 
-        dbHelper = new DatabaseHelper(this);
+        holder.tvNumero.setText("Árbol #" + arbol.getNumero());
+        holder.tvNombreCientifico.setText(arbol.getNombreCientifico());
+        holder.tvNombreComun.setText(arbol.getNombreComun());
 
-        etNombre = findViewById(R.id.etNombre);
-        etDescripcion = findViewById(R.id.etDescripcion);
-        btnGuardar = findViewById(R.id.btnGuardar);
-        listaArboles = findViewById(R.id.listaArboles);
+        // Aquí deberías cargar la imagen desde URI o ruta local si tienes
+        holder.imgArbol.setImageResource(R.drawable.ic_logo); // Por ahora, un ícono fijo
+    }
 
-        btnGuardar.setOnClickListener(v -> {
-            String nombre = etNombre.getText().toString().trim();
-            String descripcion = etDescripcion.getText().toString().trim();
+    @Override
+    public int getItemCount() {
+        return listaFiltrada.size();
+    }
 
-            if (nombre.isEmpty() || descripcion.isEmpty()) {
-                Toast.makeText(this, "Completa todos los campos", Toast.LENGTH_SHORT).show();
+    @Override
+    public Filter getFilter() {
+        return filtro;
+    }
+
+    private final Filter filtro = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Arbol> filtrada = new ArrayList<>();
+            if (constraint == null || constraint.length() == 0) {
+                filtrada.addAll(listaCompleta);
             } else {
-                boolean insertado = dbHelper.insertarArbol(nombre, descripcion);
-                if (insertado) {
-                    Toast.makeText(this, "Árbol guardado con éxito", Toast.LENGTH_SHORT).show();
-                    etNombre.setText("");
-                    etDescripcion.setText("");
-                    mostrarArboles(); // ✅ actualiza la lista
-                } else {
-                    Toast.makeText(this, "Error al guardar", Toast.LENGTH_SHORT).show();
+                String filtroPatron = constraint.toString().toLowerCase().trim();
+                for (Arbol a : listaCompleta) {
+                    if (a.getNombreCientifico().toLowerCase().contains(filtroPatron) ||
+                            a.getNombreComun().toLowerCase().contains(filtroPatron)) {
+                        filtrada.add(a);
+                    }
                 }
             }
-        });
+            FilterResults results = new FilterResults();
+            results.values = filtrada;
+            return results;
+        }
 
-        mostrarArboles(); // ✅ mostrar al iniciar
-    }
-    private void mostrarArboles() {
-        ArrayList<String> lista = dbHelper.obtenerTodosLosArboles();
-        adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
-        listaArboles.setAdapter(adaptador);
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            listaFiltrada.clear();
+            listaFiltrada.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+    public static class ArbolViewHolder extends RecyclerView.ViewHolder {
+        ImageView imgArbol;
+        TextView tvNumero, tvNombreCientifico, tvNombreComun;
+
+        public ArbolViewHolder(@NonNull View itemView) {
+            super(itemView);
+            imgArbol = itemView.findViewById(R.id.imgArbol);
+            tvNumero = itemView.findViewById(R.id.tvNumero);
+            tvNombreCientifico = itemView.findViewById(R.id.tvNombreCientifico);
+            tvNombreComun = itemView.findViewById(R.id.tvNombreComun);
+        }
     }
 }
