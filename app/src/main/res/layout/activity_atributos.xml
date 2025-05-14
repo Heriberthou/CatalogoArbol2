@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <!-- Fondo de hojas -->
     <ImageView
         android:id="@+id/fondo"
@@ -48,62 +47,107 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <!-- Campos -->
+                <!-- Diámetro -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Diámetro del fuste (cm)"
+                    android:textColor="#2E2E2E"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
+
                 <EditText
                     android:id="@+id/etDiametro"
-                    android:hint="Diámetro del fuste (cm)"
+                    android:hint=" Ingresa un valor entre 10 y 100 (Ej:15.5)"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#7C7C7C"
                     android:textColor="#2E2E2E"
-                    android:background="@null"
+                    android:background="@android:drawable/editbox_background_normal"
                     android:layout_marginBottom="12dp" />
+
+                <!-- Altura -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Altura del árbol (m)"
+                    android:textColor="#2E2E2E"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
 
                 <EditText
                     android:id="@+id/etAltura"
-                    android:hint="Altura del árbol (m)"
+                    android:hint="Ingresa un número positivo (Ej. 5.8)"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#7C7C7C"
                     android:textColor="#2E2E2E"
-                    android:background="@null"
+                    android:background="@android:drawable/editbox_background_normal"
                     android:layout_marginBottom="24dp" />
+
+                <!-- Hojas -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="% de hojas"
+                    android:textColor="#2E2E2E"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
 
                 <EditText
                     android:id="@+id/etHojas"
-                    android:hint="% de hojas"
+                    android:hint="Valor entre 0 y 100 (de 5 en 5)"
                     android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#7C7C7C"
                     android:textColor="#2E2E2E"
-                    android:background="@null"
+                    android:background="@android:drawable/editbox_background_normal"
                     android:layout_marginBottom="12dp" />
+
+                <!-- Flores -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="% de flores"
+                    android:textColor="#2E2E2E"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
 
                 <EditText
                     android:id="@+id/etFlores"
-                    android:hint="% de flores"
+                    android:hint="Valor entre 0 y 100 (de 5 en 5)"
                     android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="#7C7C7C"
                     android:textColor="#2E2E2E"
-                    android:background="@null"
+                    android:background="@android:drawable/editbox_background_normal"
                     android:layout_marginBottom="12dp" />
+
+                <!-- Frutos -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="% de frutos"
+                    android:textColor="#2E2E2E"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="4dp" />
 
                 <EditText
                     android:id="@+id/etFrutos"
-                    android:hint="% de frutos"
+                    android:hint="Valor entre 0 y 100 (de 5 en 5)"
                     android:inputType="number"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="#7C7C7C"
                     android:textColor="#2E2E2E"
-                    android:background="@null"
+                    android:textColorHint="#7C7C7C"
+                    android:background="@android:drawable/editbox_background_normal"
                     android:layout_marginBottom="12dp" />
 
+                <!-- Spinners -->
                 <Spinner
                     android:id="@+id/spMadurez"
                     android:layout_width="match_parent"
