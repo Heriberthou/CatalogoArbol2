@@ -58,7 +58,7 @@
 
                 <EditText
                     android:id="@+id/etDiametro"
-                    android:hint=" Ingresa un valor entre 10 y 100 (Ej:15.5)"
+                    android:hint="Valor entre 10 y 100 (Ej. 15.5)"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
 
                 <EditText
                     android:id="@+id/etAltura"
-                    android:hint="Ingresa un número positivo (Ej. 5.8)"
+                    android:hint="Número positivo (Ej. 5.8)"
                     android:inputType="numberDecimal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
