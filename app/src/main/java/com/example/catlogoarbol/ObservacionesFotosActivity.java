@@ -195,9 +195,13 @@ public class ObservacionesFotosActivity extends AppCompatActivity {
 
         if (insertado) {
             Toast.makeText(this, "Árbol guardado exitosamente 🌳", Toast.LENGTH_LONG).show();
-            finishAffinity();
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+            finish();
         } else {
             Toast.makeText(this, "Error al guardar en la base de datos", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

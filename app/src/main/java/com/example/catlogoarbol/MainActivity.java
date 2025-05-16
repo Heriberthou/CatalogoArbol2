@@ -2,10 +2,14 @@ package com.example.catlogoarbol;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.SearchView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -14,43 +18,50 @@ public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArbolAdapter arbolAdapter;
-    private SearchView searchView;
-    private FloatingActionButton fabAgregar;
     private DatabaseHelper dbHelper;
+    private EditText etBuscar;
+    private List<Arbol> listaArboles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        etBuscar = findViewById(R.id.etBuscar);
         recyclerView = findViewById(R.id.recyclerView);
-        searchView = findViewById(R.id.searchView);
-        fabAgregar = findViewById(R.id.fabAgregar);
+        FloatingActionButton fab = findViewById(R.id.fabAgregar);
+
         dbHelper = new DatabaseHelper(this);
+        listaArboles = dbHelper.obtenerArbolesComoObjetos();
 
-        // Cargar datos reales
-        List<Arbol> listaArboles = dbHelper.obtenerArbolesComoObjetos();
         arbolAdapter = new ArbolAdapter(this, listaArboles);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(arbolAdapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
-        // Buscar en tiempo real
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        // Filtro de búsqueda
+        etBuscar.addTextChangedListener(new TextWatcher() {
             @Override
-            public boolean onQueryTextSubmit(String query) {
-                return false;
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                arbolAdapter.filtrar(s.toString());
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                arbolAdapter.getFilter().filter(newText);
-                return false;
-            }
+            public void afterTextChanged(Editable s) {}
         });
 
-        fabAgregar.setOnClickListener(v -> {
+        fab.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, DatosGeneralesActivity.class);
             startActivity(intent);
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listaArboles = dbHelper.obtenerArbolesComoObjetos();
+        arbolAdapter.actualizarLista(listaArboles);
     }
 }

@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,17 +32,23 @@
 
             <TextView
                 android:id="@+id/tvNumero"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Árbol #001"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvNombreCientifico"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Nombre científico"
                 android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/tvNombreComun"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="Nombre común" />
         </LinearLayout>
     </LinearLayout>

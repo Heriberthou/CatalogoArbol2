@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <SearchView
-        android:id="@+id/searchView"
+    <EditText
+        android:id="@+id/etBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Buscar árbol..." />
+        android:hint="Buscar árbol..."
+        android:inputType="text" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="8dp" />
+        android:layout_marginTop="8dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_margin="16dp"
-        android:src="@drawable/logo"
-        android:contentDescription="Agregar nuevo árbol" />
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
 </LinearLayout>

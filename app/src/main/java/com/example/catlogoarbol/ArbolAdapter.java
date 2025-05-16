@@ -9,12 +9,15 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHolder> implements Filterable {
+
     private List<Arbol> listaArboles;
     private List<Arbol> listaArbolesFull;
     private Context context;
@@ -22,7 +25,7 @@ public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHol
     public ArbolAdapter(Context context, List<Arbol> listaArboles) {
         this.context = context;
         this.listaArboles = listaArboles;
-        listaArbolesFull = new ArrayList<>(listaArboles);
+        this.listaArbolesFull = new ArrayList<>(listaArboles);
     }
 
     @NonNull
@@ -42,7 +45,7 @@ public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHol
         if (arbol.getImagenUri() != null && !arbol.getImagenUri().isEmpty()) {
             holder.imgArbol.setImageURI(Uri.parse(arbol.getImagenUri()));
         } else {
-            holder.imgArbol.setImageResource(R.drawable.logo);
+            holder.imgArbol.setImageResource(android.R.drawable.ic_menu_gallery); // ícono genérico si no hay imagen
         }
     }
 
@@ -83,6 +86,16 @@ public class ArbolAdapter extends RecyclerView.Adapter<ArbolAdapter.ArbolViewHol
             notifyDataSetChanged();
         }
     };
+
+    public void filtrar(String texto) {
+        getFilter().filter(texto);
+    }
+
+    public void actualizarLista(List<Arbol> nuevaLista) {
+        this.listaArboles = nuevaLista;
+        this.listaArbolesFull = new ArrayList<>(nuevaLista);
+        notifyDataSetChanged();
+    }
 
     class ArbolViewHolder extends RecyclerView.ViewHolder {
         ImageView imgArbol;

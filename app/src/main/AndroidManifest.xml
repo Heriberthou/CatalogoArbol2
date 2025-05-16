@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <!-- Permisos -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission
@@ -8,6 +9,7 @@
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    <!-- Declarar que la cámara es opcional -->
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -22,35 +24,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CatálogoArbol"
         tools:targetApi="31">
-        <activity
-            android:name=".ArbolAdapter"
-            android:exported="false" />
-        <!-- Splash -->
+
+        <!-- Splash (no es launcher ahora) -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".AtributosActivity"
             android:exported="false" />
+
         <activity
             android:name=".ObservacionesFotosActivity"
             android:exported="false" />
+
         <activity
             android:name=".InteraccionActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize"/>
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- ACTIVIDAD PRINCIPAL -->
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".DatosGeneralesActivity"
-            android:exported="false" /> <!-- Proveedor para fotos -->
+            android:exported="false" />
+
+        <!-- FileProvider para fotos -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -60,6 +67,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
 
 </manifest>
